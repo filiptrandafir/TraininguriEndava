@@ -1,0 +1,31 @@
+Cazul 1 (SuperIs)
+In cazul in care Car e serializabila si Audi nu, serializarea respectiv deserializarea se realizeaza cu succes! Asta inseamna ca daca super clasa e serializabila si subclasa ei va fi serializabila by default,  fara sa mai fie nevoie sa implementam interfata Serializable!
+
+Cazul 2 (SubIs)
+In cazul in care superclasa nu e serializabila si subclasa este am obtinut:
+java.io.InvalidClassException: Serialization.Audi; no valid constructor
+	at java.io.ObjectStreamClass$ExceptionInfo.newInvalidClassException(Unknown Source)
+	at java.io.ObjectStreamClass.checkDeserialize(Unknown Source)
+	at java.io.ObjectInputStream.readOrdinaryObject(Unknown Source)
+	at java.io.ObjectInputStream.readObject0(Unknown Source)
+	at java.io.ObjectInputStream.readObject(Unknown Source)
+	at Serialization.Implementation.main(Implementation.java:30)
+Printing value of Deserialized Car's instance :
+Exception in thread "main" java.lang.NullPointerException
+	at Serialization.Implementation.main(Implementation.java:44)
+Solutie:
+Daca adaug un constructor fara parametri in clasa de baza obtin: 
+Printing value of Deserialized Car's instance :
+Color: null
+Concluzia este ca daca superclasa nu e serializabila, atunci toate valorile pentru variabile din superclasa vor fi initializate in urma apelului constrctorului clasei de baza.
+
+Cazul 3 (Prevent)
+In cazul in care nu vrem ca subclasa sa fie serializabila am suprascris metodele writeObject() si readObject() si am aruncat o exceptie NotSerializableException.
+
+Cazul 4 (SerializeObject)
+In cazul in care se doreste serializarea unui obiect dintr-o clasa care implementeaza interfata Serializable dar acest obiect include o referinta catre o clasa care nu e serializabila am obtinut o eroare de "NotSerializableException". 
+
+
+
+
+
