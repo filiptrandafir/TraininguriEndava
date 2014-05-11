@@ -1,5 +1,4 @@
-package colections.exercises;
-
+package solutions.alexandra_tincu;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -9,8 +8,12 @@ import java.util.Random;
 public class RandomizedQueue<Item> implements Iterable<Item> {
     
     private List<Item> queue;
+    // daca rezolvi cu ArrayList atunci proprietatea asta nu cred ca iti mai trebuie
     private int queueSize;
 
+    //generatorul ai putea sa-l muti in constructor si 
+    //parametrul lui trebuie sa fie size-ul colectiei
+    
     private Random generator = new Random(10);
 
     //construct an empty randomized queue
@@ -97,6 +100,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
 
+    //test pentru sample?
     public static void main (String[] args){
         RandomizedQueue<Integer> random = new RandomizedQueue<Integer>();
         random.enqueue(5);
@@ -114,4 +118,3 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     }
 }
-
